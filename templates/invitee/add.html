@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Modifier Invité' if invitee else 'Ajouter Invité' }}{% endblock %}
+
+{% block content %}
+<h2>{{ 'Modifier un invité' if invitee else 'Ajouter un invité' }}</h2>
+
+<form method="POST">
+
+    <label>Nom et Prénoms :</label>
+    <input type="text" name="nom_prenoms" value="{{ invitee.nom_prenoms if invitee else '' }}" required><br><br>
+
+    <label>Famille :</label>
+    <input type="text" name="famille" value="{{ invitee.famille if invitee else '' }}"><br><br>
+
+    <label>Nombre de personnes :</label>
+    <input type="number" name="nb_personnes" value="{{ invitee.nb_personnes if invitee else '1' }}" required><br><br>
+
+    <button type="submit">Valider</button>
+
+</form>
+
+{% endblock %}

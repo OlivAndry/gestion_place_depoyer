@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Modifier Table' if table else 'Ajouter Table' }}{% endblock %}
+
+{% block content %}
+<h2>{{ 'Modifier une table' if table else 'Ajouter une table' }}</h2>
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+    <label>Numéro Table :</label>
+    <input type="text" name="num_table" value="{{ table.num_table if table else '' }}" required><br><br>
+
+    <label>Nom Table :</label>
+    <input type="text" name="nom_table" value="{{ table.nom_table if table else '' }}"><br><br>
+
+    <label>Capacité :</label>
+    <input type="number" name="capacite" value="{{ table.capacite if table else '' }}" required><br><br>
+
+    <label>Localisation :</label>
+    <select name="localisation" required>
+        <option value="Gauche" {% if table and table.localisation == 'Gauche' %}selected{% endif %}>Gauche</option>
+        <option value="Droite" {% if table and table.localisation == 'Droite' %}selected{% endif %}>Droite</option>
+        <option value="Centre" {% if table and table.localisation == 'Centre' %}selected{% endif %}>Centre</option>
+    </select><br><br>
+
+    <button type="submit">Valider</button>
+
+</form>
+
+{% endblock %}

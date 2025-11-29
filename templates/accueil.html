@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Gestion des Invitations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Gestion des invitations intelligente</h1>
+    <div class="table-blocks">
+        <a href="/invitee" class="card-link">
+            <div class="table-block">
+                <h3>Liste des Invités</h3>
+                <p>Voir tous les invités enregistrés et les gerer.</p>
+            </div>
+        </a>
+        <a href="/table" class="card-link">
+            <div class="table-block">
+                <h3>Liste des Tables</h3>
+                <p>Voir toutes les tables enregistrés et les gerer.</p>
+            </div>
+        </a>
+        <a href="/invitee/add" class="card-link">
+            <div class="table-block">
+                <h3>Ajouter un Invité</h3>
+                <p>Ajouter des nouveaux invités pour l'événement.</p>
+            </div>
+        </a>
+        <a href="/table/add" class="card-link">
+            <div class="table-block">
+                <h3>Ajouter une Table</h3>
+                <p>Ajouter d'autre tables dans la salle de fete.</p>
+            </div>
+        </a>
+        <a href="/placement/generate" class="card-link">
+            <div class="table-block">
+                <h3>Générer Placement</h3>
+                <p>Générer le placement automatique.</p>
+            </div>
+        </a>
+        <a href="/placement/table_generer" class="card-link">
+            <div class="table-block">
+                <h3>Visualisation Placement</h3>
+                <p>Voir le placement généré.</p>
+            </div>
+        </a>
+        <a href="/invitee/gener_invitation" class="card-link">
+            <div class="table-block">
+                <h3>Visualisation Invitation</h3>
+                <p>Voir les invitations à générer.</p>
+            </div>
+        </a>
+        <a href="/placement/reset" class="card-link">
+            <div class="table-block">
+                <h3>Réinitialiser Placement</h3>
+                <p>Effacer le placement actuel.</p>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Gestion des Invitations. Développée par OlivAndry.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='style.js') }}"></script>
+</body>
+</html>

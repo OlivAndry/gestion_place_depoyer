@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Résultat du Plan de Table{% endblock %}
+
+{% block content %}
+<h2>Résultat du plan de table</h2>
+
+<div class="table-blocks">
+{% for table in tables_grouped %}
+<div class="table-block">
+    <h3>Table {{ table.num_table }} : {{ table.nom_table }} ( {{ table.capacite }} personnes) </h3>
+    <ul>
+    {% for guest in table.guests %}
+        <li>- {{ guest.nom }} {{ guest.prenoms }} (Famille: {{ guest.famille }}) : {{ guest.nb_personnes }} personnes </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+</div>
+
+{% if num_remaining_tables > 0 %}
+<hr>
+
+<h3>Places restantes par table</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Table</th>
+        <th>Places restantes</th>
+    </tr>
+    {% for t in tables %}
+    {% if t.reste > 0 %}
+    <tr>
+        <td>{{ t.nom }}</td>
+        <td>{{ t.reste }}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+
+<hr>
+{% endif %}
+
+{% if total_not_placed > 0 %}
+<hr>
+
+<h3 style="color: red;">Invités non placés</h3>
+<p>Nombre de personnes non placées: {{ total_not_placed }}</p>
+<ul>
+{% for np in not_placed %}
+    <li>{{ np.nom }} {{ np.prenoms }} : {{ np.nb }} personne(s)</li>
+{% endfor %}
+</ul>
+
+<hr>
+{% endif %}
+
+<br>
+<a href="/placement/table_generer">Visualisation Placement</a>
+<br>
+<a href="/placement/pdf">Générer PDF</a> <br>
+
+{% endblock %}

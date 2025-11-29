@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan de Table PDF</title>
+    <style>
+        @page {
+            margin: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+            color: rgb(48, 43, 43);
+            line-height: 1.6;
+        }
+        h2 {
+            color: black;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .guest-blocks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .guest-block {
+            background-color: white;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .guest-block h3 {
+            margin-top: 0;
+            color: black;
+            border-bottom: 1px solid lightgray;
+            padding-bottom: 10px;
+        }
+        .guest-block p {
+            margin: 5px 0;
+        }
+        .guest-block ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .guest-block li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h2>Voici notre plan de table</h2>
+    <div class="guest-blocks">
+    {% for guest in grouped_guests %}
+    <div class="guest-block">
+        <h3>{{ guest.nom }} : {{ guest.nb_personnes }} personnes</h3>
+        <ul>
+        {% for table in guest.tables %}
+            <li>- Table {{ table.num_table }} : {{ table.nom_table }} ({{ table.nb_placed }} personnes)</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

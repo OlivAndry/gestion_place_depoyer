@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Plan de Table Généré{% endblock %}
+
+{% block content %}
+
+<h2>Plan de Table Généré</h2>
+
+<div class="guest-blocks">
+{% for guest in grouped_guests %}
+<div class="guest-block">
+    <h3>{{ guest.nom }} {{ guest.prenoms }} : {{ guest.nb_personnes }} personnes</h3>
+    <p>Famille de : {{ guest.famille }}</p>
+    <ul>
+    {% for table in guest.tables %}
+        <li>Table {{ table.num_table }} : {{ table.nom_table }} ({{ table.nb_placed }} personnes)</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+</div>
+
+<br>
+<a href="/placement/pdf">Générer PDF</a><br>
+
+{% endblock %}

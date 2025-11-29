@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Générer Invitations{% endblock %}
+
+{% block content %}
+
+<h2>Voici les invitations à imprimer</h2>
+
+<div class="invitation-blocks">
+{% for invitee in invitees %}
+<div class="invitation-block">
+    <h3>Fanasana</h3>
+    <p>Ho an'i {{ invitee.nom_prenoms }}, faly manasa olona {{ invitee.nb_personnes }} avy aminao taranak'i {{ invitee.famille }} izahay hiarahifety aminay. Manantenana ny fahatongavanao !</p>
+    <p class="invitation-label">Misaotra tompoko !</p>
+</div>
+{% endfor %}
+</div>
+
+<p>Cliquez sur le lien ci-dessous pour générer et télécharger les invitations en PDF.</p>
+
+<a href="/invitee/gener_pdf">Télécharger Invitations PDF</a>
+
+{% endblock %}

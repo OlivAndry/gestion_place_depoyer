@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Invitations PDF</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+            color: rgb(48, 43, 43);
+            line-height: 1.6;
+        }
+        h2 {
+            color: black;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .invitation-blocks {
+            width: 600px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .invitation-block {
+            background-color: white;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        .invitation-block p {
+            margin-top: 0px;
+            font-style: italic;
+        }
+        .invitation-block h3 {
+            text-align: center;
+            margin-bottom: 0px;
+        }
+        .invitation-label {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-style: normal;
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+    <h2>Nos Invitations</h2>
+    <div class="invitation-blocks">
+    {% for invitee in invitees %}
+    <div class="invitation-block">
+        <h3>Fanasana</h3>
+        <p>Ho an'i {{ invitee.nom_prenoms }}, faly manasa olona {{ invitee.nb_personnes }} avy aminao taranak'i {{ invitee.famille }} izahay hiarahifety aminay. Manantenana ny fahatongavanao !</p>
+        <p class="invitation-label">Misaotra tompoko !</p>
+    </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

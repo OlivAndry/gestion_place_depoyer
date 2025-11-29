@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des Tables{% endblock %}
+
+{% block content %}
+<h2>Liste des tables</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>N°</th>
+        <th>Num Table</th>
+        <th>Nom Table</th>
+        <th>Capacité</th>
+        <th>Localisation</th>
+    </tr>
+
+    {% for t in tables %}
+    <tr>
+        <td>{{ "%03d" | format(loop.index) }} <a href="/table/edit/{{ t.id_table }}">✏️</a> <a href="/table/delete/{{ t.id_table }}" onclick="return confirm('Supprimer ?')">🗑️</a></td>
+        <td>{{ t.num_table }}</td>
+        <td>{{ t.nom_table }}</td>
+        <td>{{ t.capacite }}</td>
+        <td>{{ t.localisation }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<a href="/table/add">Ajouter une nouvelle table</table></a>
+
+{% endblock %}

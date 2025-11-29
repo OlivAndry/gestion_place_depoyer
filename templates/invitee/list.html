@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des Invités{% endblock %}
+
+{% block content %}
+<h2>Liste des invités</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>N°</th>
+        <th>Nom et Prénoms</th>
+        <th>Famille</th>
+        <th>Nb personnes</th>
+    </tr>
+
+    {% for i in invitees %}
+    <tr>
+        <td>{{ "%03d" | format(loop.index) }} <a href="/invitee/edit/{{ i.id_inv }}">✏️</a> <a href="/invitee/delete/{{ i.id_inv }}" onclick="return confirm('Supprimer ?')">🗑️</a></td>
+        <td>{{ i.nom_prenoms }}</td>
+        <td>{{ i.famille }}</td>
+        <td>{{ i.nb_personnes }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<a href="/invitee/add">Ajouter une nouvelle inviter</a>
+
+<br><br>
+<a href="/invitee/gener_invitation">Visualiser l'invitations à generer</a><br>
+
+{% endblock %}
