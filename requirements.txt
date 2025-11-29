@@ -1,0 +1,12 @@
+Flask
+Flask-MySQLdb
+mysqlclient
+python-dotenv
+reportlab
+cle
+
+weasyprint
+html5lib
+cssselect
+
+gunicorn
